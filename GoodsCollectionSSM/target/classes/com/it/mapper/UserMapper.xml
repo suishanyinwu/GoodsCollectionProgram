@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.UserMapper">
+    <select id="findById" resultType="com.it.entity.User">
+        select *
+        from goodscollection.user
+        where userId=#{userId}
+    </select>
+
+    <update id="updateUser" parameterType="com.it.entity.User">
+        update goodscollection.user
+        <set>
+            <if test="userName !=null and ''!=userName and userName !='null' ">userName=#{userName},</if>
+            <if test="userImgUrl !=null and ''!=userImgUrl and userImgUrl !='null'">userImgUrl=#{userImgUrl},</if>
+            <if test="phone !=null and ''!=phone and phone !='null' ">phone=#{phone},</if>
+            <if test="power !=null and ''!=power and power !='0'.toString() and power!='null'">power=#{power}</if>
+        </set>
+        where userId=#{userId}
+    </update>
+
+    <insert id="addUser" >
+        insert into goodscollection.user(userId, userName, userImgUrl,phone)
+        values (#{userId},#{userName},#{userImgUrl},#{phone});
+    </insert>
+
+    <delete id="deleteUser" parameterType="string">
+        delete from goodscollection.user where userId=#{userId}
+    </delete>
+
+</mapper>

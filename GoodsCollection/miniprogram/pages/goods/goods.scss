@@ -1,0 +1,107 @@
+/* pages/goods/goods.wxss */
+
+page{
+  background-color: #EEEEEE;
+}
+//轮播图
+.swiper{
+  swiper{
+    height: 600rpx;
+    background-color: rgb(223, 220, 220);
+    swiper-item{
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+//商品信息区域
+.goods-info-box{
+  padding: 10px;
+  padding-right: 0;
+  background-color: #FFFFFF;
+
+  .price{
+    color: rgb(197, 2, 2);
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  .goods-info-body{
+    display: flex;
+    justify-content: space-between;
+    .goods-name{
+      font-size: 15px;
+      margin-right: 10px;
+
+    }
+    .favi{
+      width: 75px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #efefef;
+      color: grey;
+    }
+  }
+
+  
+  .gooods-other{
+    display: flex;
+    justify-content: space-between;
+    .goods-brand-name{
+      font-size: 13px;
+      color: #af8722;
+      margin-top: 15px;
+      margin-right: 15px;
+    }
+    .goods-dateTime{
+      font-size: 13px;
+      color: #af8722;
+      margin-top: 15px;
+      margin-right: 15px;
+    }
+  }
+  
+}
+
+//商品总体评价
+.goods-review-box{
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  padding: 10px;
+  padding-right: 0;
+  margin-top: 8px;
+  .goods-review-title{
+    font-size: 14px;
+    margin-right: 15px;
+    color: #CD5C5C;
+  }
+  .goods-review-body{
+    font-size: 12px;
+    margin-right: 15px;
+    color: grey;
+  }
+  
+  
+
+}
+
+//周边详细内容
+.goods-describes-box{
+  .goods-describes-text{
+    font-size: 15px;
+    background-color: #FFFFFF;
+    padding: 20rpx;
+    margin-top: 15rpx;
+  }
+
+  .goods-describes-body{
+    background-color: #fff;
+
+  }
+}

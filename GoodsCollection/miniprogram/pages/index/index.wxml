@@ -1,0 +1,43 @@
+<!--index.wxml-->
+
+<!--轮播图-->
+<view class="swiper">
+  <swiper 
+  autoplay
+  circular 
+  interval="4000" 
+  indicator-dots 
+  indicator-color="white" 
+  indicator-active-color="#FFFF99">
+    <swiper-item wx:for="{{ swiperList }}" wx:key="*this" >
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!--推荐 跳转到推荐页面-->
+<navigator url="/pages/recommendation/recommendation" open-type="navigate" hover-class="none">
+  <view class="recommendation-jump">
+    <view>
+      <image src="../../assets/index/index-1.png"></image>
+      <text>周边推荐</text>
+    </view>
+  </view>
+</navigator>
+
+<!--活动消息-->
+<view class="message-hot">
+  <view class="message-item" wx:for="{{newInfoList}}" wx:for-item="item">
+
+    <view class="text-item">
+      <text>{{ item.messageText }}</text>
+      <text>{{ item.dateTime }}</text>
+    </view>
+
+    <image src="{{item.imgUrl}}" mode="aspectFill"></image>
+
+  </view>
+</view>
+
+<!--文字提醒-->
+<view class="notice-text"><text>更多详细内容请查阅官网</text></view>

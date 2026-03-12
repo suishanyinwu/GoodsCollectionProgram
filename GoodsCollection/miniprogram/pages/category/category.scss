@@ -1,0 +1,26 @@
+/* pages/category/category.wxss */
+//搜索框
+.search{
+  height: 160rpx;
+  margin-top: 40rpx;
+}
+
+.left-view{
+  float: left;
+  width: 25%;
+}
+
+.right-view{
+  float: right;
+  width: 75%;
+  image{
+  width: 125rpx;
+  height: 125rpx;
+  border-radius: 12rpx;
+  margin: 12rpx;
+  }
+  text{
+    font-size: 30rpx;
+    color:#aaa;
+  }
+}

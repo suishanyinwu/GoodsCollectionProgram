@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index"
+  },
+  "navigationStyle": "default",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText": "编辑资料",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundTextStyle":"dark",
+  "enablePullDownRefresh": false,
+  "restartStrategy": "homePage"
+}

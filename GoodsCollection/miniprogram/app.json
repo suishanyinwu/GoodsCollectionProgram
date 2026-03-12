@@ -1,0 +1,61 @@
+{
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/favorites/favorites",
+    "pages/profile/profile",
+    "pages/notice/notice",
+    "pages/profileForm/profileForm",
+    "pages/login/login",
+    "pages/search/search",
+    "pages/category/category",
+    "pages/goods/goods",
+    "pages/tag/tag",
+    "pages/publish/publish",
+    "pages/publishForm/publishForm",
+    "pages/recommendation/recommendation",
+    "pages/reviewList/reviewList",
+    "pages/userReviewList/userReviewList",
+    "pages/reviewform/reviewform"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle":"dark"
+  },
+  "tabBar": {
+    "selectedColor": "#336699",
+    "borderStyle":"white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "/assets/tabber/index.png",
+      "selectedIconPath": "/assets/tabber/index-active.png"
+    },{
+      "pagePath": "pages/category/category",
+      "text": "分类",
+      "iconPath": "/assets/tabber/category.png",
+      "selectedIconPath": "/assets/tabber/category-active.png"
+    },{
+      "pagePath": "pages/favorites/favorites",
+      "text": "收藏",
+      "iconPath": "/assets/tabber/favorites.png",
+      "selectedIconPath": "/assets/tabber/favorites-active.png"
+    },{
+      "pagePath": "pages/profile/profile",
+      "text": "我的",
+      "iconPath": "/assets/tabber/profile.png",
+      "selectedIconPath": "/assets/tabber/profile-active.png"
+    }]
+  },
+  
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

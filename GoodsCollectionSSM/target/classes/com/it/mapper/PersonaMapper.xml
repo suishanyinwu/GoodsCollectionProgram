@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.PersonaMapper">
+    <select id="findByIpId" parameterType="string" resultType="com.it.entity.Persona">
+       select *
+       from goodscollection.persona
+       where ipId=#{ipId}
+    </select>
+
+    <select id="findBriefByIpId" resultType="map">
+        select personaId,personaName
+        from goodscollection.persona
+        where ipId=#{ipId}
+    </select>
+
+    <delete id="delAllByGoodsId">
+        delete from goodscollection.productassociations where goodsId=#{goodsId}
+    </delete>
+
+    <select id="findByGoodsId" resultType="string">
+        select personaId
+        from goodscollection.productassociations
+        where goodsId=#{goodsId}
+    </select>
+
+    <insert id="addGoodsPersonaList" parameterType="com.it.entity.ProductAssociations">
+        insert into goodscollection.productassociations(goodsId, personaId)
+        VALUES (#{goodsId},#{personaId})
+    </insert>
+</mapper>

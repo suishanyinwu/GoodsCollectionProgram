@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+  },
+  "navigationStyle": "default",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText": "通知列表",
+  "navigationBarBackgroundColor": "#EEEEEE",
+  "backgroundTextStyle":"dark",
+  "restartStrategy": "homePage"
+}

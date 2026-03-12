@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.FavoritesMapper">
+
+    <select id="findBrandListByUserID" resultType="com.it.entity.Brand">
+        select brand.*
+        from goodscollection.brandcolllist
+            inner join goodscollection.brand on brandcolllist.brandId = brand.brandId
+        where userId=#{userId}
+        order by id desc
+        limit 4 offset #{listLength}
+    </select>
+
+    <select id="findGoodsListByUserID" resultType="string" >
+        select goodsId
+        from goodscollection.goodscolllist
+        where userId=#{userId}
+        order by id desc
+        limit 4 offset #{listLength}
+    </select>
+
+    <select id="findFavInfo" resultType="com.it.entity.GoodsCollList">
+       select *
+       from goodscollection.goodscolllist
+       where userId=#{userId} and goodsId=#{goodsId}
+    </select>
+
+    <select id="findFavInfoByUserId" resultType="com.it.entity.GoodsCollList">
+        select *
+        from goodscollection.goodscolllist
+        where userId=#{userId}
+    </select>
+
+    <insert id="addFavInfo">
+        insert into goodscollection.goodscolllist(goodsId, userId)
+        VALUES (#{goodsId},#{userId});
+    </insert>
+
+    <delete id="deleteFavInfo" parameterType="com.it.entity.GoodsCollList">
+        delete from goodscollection.goodscolllist
+               where userId=#{userId} and goodsId=#{goodsId}
+    </delete>
+
+    <delete id="delFavGoodsByID">
+        delete from goodscollection.goodscolllist where goodsId=#{goodsId}
+    </delete>
+
+    <select id="findFavBrandInfo" resultType="com.it.entity.BrandCollList">
+        select *
+        from goodscollection.brandcolllist
+        where userId=#{userId} and brandId=#{brandId}
+    </select>
+
+    <insert id="addFavBrandInfo" >
+        insert into goodscollection.brandcolllist(brandId, userId)
+        VALUES (#{brandId},#{userId})
+    </insert>
+
+    <delete id="deleteFavBrandInfo" parameterType="com.it.entity.BrandCollList">
+        delete from goodscollection.brandcolllist
+               where userId=#{userId} and brandId=#{brandId}
+    </delete>
+</mapper>

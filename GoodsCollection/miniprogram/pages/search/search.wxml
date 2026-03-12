@@ -1,0 +1,40 @@
+<!--page/search/search.wxml-->
+
+<!--搜索框-->
+<view class="search">
+  <van-search 
+  value="{{ searchValue }}" 
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  shape="round"
+  bind:clear="resetList"
+  bind:change="onChange"
+>
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+</view>
+
+<!--展示内容-->
+<view class="search-content" >
+  <!--商品列表-->
+  <view wx:for="{{ goodShowList }}" 
+  wx:key="this" 
+  bind:tap="gotoGoodsPage"
+  data-index="{{index}}"
+  >
+    <view class="search-item" >
+    
+    <image src="{{item.goodsImgUrl}}" mode="aspectFill"></image>
+
+    <view class="text-item">
+      <text>{{ item.goodsSeries }}</text>
+      <view class="text-price">
+        <text>￥</text>
+        <text>{{ item.price }}</text>
+      </view>
+    </view>
+
+    </view>
+  </view>
+
+</view>

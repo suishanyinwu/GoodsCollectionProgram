@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.WXuserMapper">
+
+    <select id="findByopenid" parameterType="string" resultType="com.it.entity.WXuser">
+        select *
+        from goodscollection.wxuser
+        where openid=#{openid}
+    </select>
+
+    <insert id="addNewWXuser" parameterType="com.it.entity.WXuser">
+        insert into goodscollection.wxuser(openid, userId, session_key)
+        VALUES (#{openid},#{userId},#{session_key})
+    </insert>
+
+    <update id="updateWXUserInfo">
+        update goodscollection.wxuser
+        <set>
+            <if test="session_key != null">session_key=#{session_key}</if>
+        </set>
+        where openid=#{openid}
+    </update>
+</mapper>

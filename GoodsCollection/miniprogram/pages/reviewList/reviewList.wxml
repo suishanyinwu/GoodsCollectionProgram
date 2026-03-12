@@ -1,0 +1,92 @@
+<!--商品总体评分-->
+<view class="reviewScores" wx:if="{{goodsScores!=null}}">
+  周边评分：{{goodsScores}}
+</view>
+
+<!--导航栏-->
+<view class="review-tab" wx:if="{{reviewId==0}}">
+  <van-tabs active="{{ active }}" bind:change="onChangeTab">
+  <van-tab title="最热"></van-tab>
+  <van-tab title="最新"></van-tab>
+  </van-tabs>
+
+</view>
+
+<!--评价列表-->
+<view class="review-List">
+  <!--评价内容-->
+  <view
+  wx:for="{{reviewList}}"
+  wx:key="this"
+  data-index="{{index}}"
+  >
+  <view class="review-content">
+    <!--头像-->
+    <view class="userAvatar">
+      <van-image 
+      round 
+      width="40" 
+      height="40" 
+      src="{{item.userImgUrl}}" 
+      fit="cover" 
+      />
+    </view>
+    <!--评价信息-->
+    <view class="review-info">
+      <!--用户名-->
+      <view class="userName">
+        {{item.userName}}
+      </view>
+      <!--评价分数-->
+      <view class="review-scores">
+        评分：{{item.scores}}
+      </view>
+      <!--评价文本内容-->
+      <view class="review-textContent">
+        {{item.textContent}}
+      </view>
+      <!--评价图片-->
+      <view class="review-imgList">
+        <van-uploader 
+        file-list="{{ item.imgList }}" 
+        max-count="{{item.imgList.length}}"
+        image-fit="aspectFill"
+        disabled
+        deletable="{{false}}"
+        wx:if="{{item.imgList.length!=0}}"
+        preview-full-image
+        />
+      </view>
+      <!--最底层-->
+      <view class="review-bottom">
+        <!--评价时间-->
+        <view class="review-dateTime">
+          {{item.dateTime}}
+        </view>
+        <!--点赞内容-->
+        <view class="review-praise">
+          <!--点赞图标-->
+          <view class="praise-icon" hidden="{{item.isLike}}" bind:tap="LikeReview" data-index="{{index}}">
+            <van-icon name="{{oldUrl}}" size="45rpx" />
+          </view>
+          <view class="praise-icon-active" hidden="{{!item.isLike}}" bind:tap="LikeReview" data-index="{{index}}">
+            <van-icon name="{{newUrl}}" size="38rpx" />
+          </view>
+          <!--点赞数-->
+          <view class="praise-num{{!item.isLike?'':'-active' }}">
+            {{item.praise}}
+          </view>
+
+        </view>
+      </view>
+      
+    </view>
+  </view>
+
+  </view>
+</view>
+
+<!--列表为空时的文字提示-->
+<view hidden="{{reviewList.length!=0}}">
+  <view class="notice-text">当前评价内容为空</view>
+ </view>

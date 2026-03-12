@@ -1,0 +1,65 @@
+<!--pages/favorites/favorites.wxml-->
+
+<!--选项栏-->
+<view class="options-bar">
+  <view class="option-item{{ listChoose?'-active':'' }}" bind:tap="chooseGoodsBar">
+    <text>商品</text>
+  </view>
+
+  <view class="option-item{{listChoose?'':'-active' }}" bind:tap="chooseMerchantBar">
+    <text>店铺</text>
+  </view>
+</view>
+
+<!--收藏内容-->
+<view class="favorite-content" >
+  <!--商品列表-->
+  <view wx:for="{{ goodList }}" 
+  wx:key="this" 
+  hidden="{{ !listChoose }}"
+  bind:tap="gotoGoodsPage"
+  data-index="{{index}}"
+  >
+    <view class="favorite-item" >
+    
+    <image src="{{item.goodsImgUrl}}" mode="aspectFill"></image>
+
+    <view class="text-item">
+      <text>{{ item.goodsSeries }}</text>
+      <view class="text-price">
+        <text>￥</text>
+        <text>{{ item.price }}</text>
+      </view>
+    </view>
+
+    </view>
+  </view>
+
+  <!--商家列表-->
+  <view wx:for="{{ merchantList }}" 
+  wx:key="this" 
+  hidden="{{ listChoose }}"
+  bind:tap="gotoGoodsList"
+  data-index="{{index}}"
+   >
+    <view class="favorite-item">
+      
+    <image src="{{item.brandImgUrl}}" mode="aspectFill"></image>
+
+    <view class="text-item">
+      <text>{{ item.brandName }}</text>
+    </view>
+
+    </view>
+  </view>
+  
+  
+</view>
+
+<!--加载更多-->
+<view class="loading" hidden="{{!searchGoodsLoading || !listChoose }}">正在载入更多...</view>
+<view class="loading" hidden="{{!searchGoodsLoadingComplete || !listChoose}}">已加载全部</view>
+<view class="loading" hidden="{{!searchMerchantLoading || listChoose }}">正在载入更多...</view>
+<view class="loading" hidden="{{!searchMerchantLoadingComplete || listChoose}}">已加载全部</view>
+
+

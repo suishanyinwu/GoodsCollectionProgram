@@ -1,0 +1,24 @@
+<!--展示内容-->
+<view class="recommendation-content" >
+  <!--商品列表-->
+  <view wx:for="{{ goodShowList }}" 
+  wx:key="this" 
+  bind:tap="gotoGoodsPage"
+  data-index="{{index}}"
+  >
+    <view class="recommendation-item" >
+    
+    <image src="{{item.goodsImgUrl}}" mode="aspectFill"></image>
+
+    <view class="text-item">
+      <text>{{ item.goodsSeries }}</text>
+      <view class="text-price">
+        <text>￥</text>
+        <text>{{ item.price }}</text>
+      </view>
+    </view>
+
+    </view>
+  </view>
+
+</view>

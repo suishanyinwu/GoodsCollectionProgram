@@ -1,0 +1,74 @@
+page{
+  background-color: #EEEEEE;
+  height: 600px;
+}
+
+//顶部工具栏
+.publish-top{
+  background-color: #FFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  .publish-item{
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  image{
+    height: 58rpx;
+    width: 58rpx;
+  }
+  text{
+    
+    font-size: 12px;
+    color: rgb(170, 166, 166);
+  }
+}
+
+//发布的周边内容
+.publish-body{
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+
+  .van-swipe-cell__right{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 105px;
+    display: flex;
+    justify-content: space-between;
+    .right-item-del{
+      background-color: #EE6363;
+      width: 50px;
+    }
+    .right-item-upd{
+      background-color: rgb(219, 161, 85);
+      width: 50px;
+    }
+  
+
+  }
+
+  .notice-text{
+
+    margin: 20rpx;
+    display: flex;
+    justify-content: center;
+    font-size: 30rpx;
+    font-weight: 350;
+    color: rgb(184, 179, 179);
+  }
+}
+
+//加载更多
+.loading {
+  position: relative;
+  bottom: 5rpx;
+  padding: 10rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: rgb(184, 179, 179);
+}

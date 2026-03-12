@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    
+  },
+  "onReachBottomDistance": 75,
+  "navigationStyle": "default",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText": "我的收藏",
+  "navigationBarBackgroundColor": "#f7c74b",
+  "backgroundTextStyle":"dark"
+
+  
+}

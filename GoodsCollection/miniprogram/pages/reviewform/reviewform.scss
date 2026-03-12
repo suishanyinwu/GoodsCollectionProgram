@@ -1,0 +1,40 @@
+/* pages/reviewform/reviewform.wxss */
+
+//内容提醒
+.notice-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: rgb(160, 158, 158);
+  height: 40px;
+  border-bottom: 1rpx solid #eeebeb;
+}
+
+//图片上传
+.van-uploader{
+  margin-top: 10px;
+} 
+
+//评分
+.scores-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  .scores-text{
+    margin-left: 10px;
+    .one{
+      font-size: 35rpx;
+      color: rgb(209, 55, 55);
+      margin-right: 1px;
+    }
+    .two{
+      font-size: 30rpx;
+      color: #6b6a6a;
+    }
+  }
+  .scores-choose{
+    margin-right: 12px;
+  }
+}

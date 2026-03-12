@@ -1,0 +1,83 @@
+<!--评价列表-->
+<view class="review-List">
+  <!--评价内容-->
+  <view
+  wx:for="{{reviewList}}"
+  wx:key="this"
+  data-index="{{index}}"
+  >
+  <view class="review-content">
+    <!--头像-->
+    <view class="userAvatar">
+      <van-image 
+      round 
+      width="40" 
+      height="40" 
+      src="{{item.userImgUrl}}" 
+      fit="cover" 
+      />
+    </view>
+    <!--评价信息-->
+    <view class="review-info">
+      <view class="info-text">
+        <!--用户名-->
+        <view class="userName">
+          {{item.userName}}
+        </view>
+        <!--周边系列名-->
+        <view class="goodsSeries">
+          {{item.goodsSeries}}
+        </view>
+      </view>
+      <!--评价分数-->
+      <view class="review-scores">
+        评分：{{item.scores}}
+      </view>
+      <!--评价文本内容-->
+      <view class="review-textContent">
+        {{item.textContent}}
+      </view>
+      <!--评价图片-->
+      <view class="review-imgList">
+        <van-uploader 
+        file-list="{{ item.imgList }}" 
+        max-count="{{item.imgList.length}}"
+        image-fit="aspectFill"
+        disabled
+        deletable="{{false}}"
+        wx:if="{{item.imgList.length!=0}}"
+        preview-full-image
+        />
+      </view>
+      <!--倒数第二层-->
+      <view class="review-bottom">
+        <!--评价时间-->
+        <view class="review-dateTime">
+          {{item.dateTime}}
+        </view>
+        <!--点赞内容-->
+        <view class="review-praise">
+          <!--点赞数-->
+          <view class="praise-num">
+            点赞数：{{item.praise}}
+          </view>
+        </view>
+      </view>
+      <!--最底层-->
+      <view class="review-lastBottom"
+       bind:tap="delReview" 
+       data-index="{{index}}"
+       wx:if="{{active==1}}"
+       >
+        <image src="../../assets/function/删除.png"></image>
+      </view>
+    </view>
+  </view>
+
+  </view>
+</view>
+
+<!--列表为空时的文字提示-->
+<view hidden="{{reviewList.length!=0}}">
+  <view class="notice-text">当前内容为空</view>
+ </view>

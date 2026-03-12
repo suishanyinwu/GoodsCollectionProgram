@@ -1,0 +1,68 @@
+/* pages/profile/profile.wxss */
+page{
+  background-color: #EEEEEE;
+}
+
+//个人信息展示
+.info-show{
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  margin-top: 210rpx;
+  van-image{
+    
+    width: 22%;
+    border-radius: 20rpx;
+    margin: 25rpx;
+  }
+
+  .info-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text{
+      margin-left: 18rpx;
+    &:nth-of-type(1){
+      font-size: 35rpx;
+      font-weight: 400;
+    }
+    &:nth-of-type(2){
+      font-size: 27rpx;
+      font-weight: 350;
+      color: rgb(184, 179, 179);
+    }
+  }
+}
+}
+
+//功能列表
+.function-all{
+  display: flex;
+  flex-direction: column;
+  background-color:white;
+  border-radius: 25rpx;
+  padding: 10rpx 15rpx;
+  margin: 18rpx;
+  text{
+    margin: 30rpx;
+    font-size: 30rpx;
+    font-weight: 400;
+  }
+}
+
+.function-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  image{
+    height: 65rpx;
+    width: 65rpx;
+  }
+  text{
+    font-size: 25rpx;
+    font-weight: 350;
+    color: rgb(133, 128, 128);
+    width: 53px;
+    
+  }
+}

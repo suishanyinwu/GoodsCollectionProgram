@@ -1,0 +1,55 @@
+
+
+<!--顶部工具-->
+<view class="tag-top">
+<view class="tag-top-item" bind:tap="showPopup" >
+  <image src="{{icon1}}" bind:tap="addTag"></image>
+  <text>新增</text>
+</view>
+</view>
+
+<!--新增tag的底部弹窗-->
+<van-popup 
+show="{{ show }}" 
+bind:close="closePopup"
+position="bottom"
+>
+<van-picker 
+columns="{{ unIPList }}" 
+show-toolbar
+title="选择新增的tag"
+bind:change="ChooseIP"
+bind:cancel="closePopup"
+bind:confirm="addTag"
+value-key="ipName"
+ />
+
+</van-popup>
+
+<!--已选tag列表展示-->
+<view class="tag-body">
+  <van-swipe-cell 
+  right-width="{{ 65 }}"
+  async-close
+  wx:for="{{tagList}}"
+  wx:key="ipId"
+  bind:close="onClose"
+  data-index="{{index}}"
+  >
+  <van-cell-group>
+    <van-cell title="IP标签" value="{{item.ipName}}" />
+  </van-cell-group>
+  <view slot="right" class="van-swipe-cell__right">删除</view>
+</van-swipe-cell>
+
+<!--tag为空时的文字提示-->
+ <view hidden="{{tagList.length!=0}}">
+  <view class="notice-text">当前tag内容为空</view>
+ </view>
+
+</view>
+
+
+
+
+

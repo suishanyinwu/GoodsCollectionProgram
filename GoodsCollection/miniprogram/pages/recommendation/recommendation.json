@@ -1,0 +1,9 @@
+{
+  "usingComponents": {},
+  "navigationStyle": "default",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText": "周边推荐",
+  "navigationBarBackgroundColor": "#f7c74b",
+  "backgroundTextStyle":"dark",
+  "restartStrategy": "homePage"
+}

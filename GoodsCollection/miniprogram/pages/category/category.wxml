@@ -1,0 +1,45 @@
+<!--pages/category/category.wxml-->
+
+<!--搜索框-->
+<view class="search">
+  <navigator url="/pages/search/search" open-type="navigate" hover-class="none">
+    <van-search 
+    placeholder="请输入搜索关键词"
+    shape="round"
+    readonly
+    >
+    </van-search>
+  </navigator>
+</view>
+
+<!--内容-->
+<view>
+  <!--左侧-->
+  <view class="left-view">
+  <van-sidebar active-key="{{ activeIndex }}">
+    <van-sidebar-item 
+    wx:for="{{sideTabList}}"
+    wx:key="ipId" 
+    bind:tap="onSideTabChange" 
+    title="{{item.ipName}}"
+    data-index="{{ index }}"
+     />
+  </van-sidebar>
+  </view>
+
+  <!--右侧-->
+<view class="right-view">
+  <van-grid column-num="3" border="{{ false }}">
+  <van-grid-item 
+  wx:for="{{personaList}}" 
+  wx:key="personaId" 
+  use-slot 
+  bind:tap="gotoGoodsList"
+  data-index="{{index}}"
+  >
+    <image src="{{item.personaImgUrl}}" mode="aspectFill"/>
+    <text>{{item.personaName}}</text>
+  </van-grid-item>
+</van-grid>
+</view>
+</view>

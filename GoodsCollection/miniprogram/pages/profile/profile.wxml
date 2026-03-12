@@ -1,0 +1,35 @@
+<!--pages/profile/profile.wxml-->
+
+<!--个人信息展示-->
+<view class="info-show">
+  <van-image 
+  round 
+  width="85" 
+  height="85" 
+  src="{{ user.userImgUrl }}" 
+  fit="cover" 
+  bind:tap="gotologinpage"
+  />
+
+  <view class="info-text">
+  <text>{{ user.userName }}</text>
+  <text>ID:{{ user.userId }}</text>
+  </view>
+</view>
+
+<!--功能列表-->
+<view class="function-all">
+  <text>我的功能</text>
+  <van-grid column-num="4" border="{{ false }}" center gutter="0">
+  <van-grid-item use-slot wx:for="{{functionList}}" wx:key="this" >
+    <view class="function-item" bind:tap="gotoOtherPage" data-index="{{index}}">
+        <image src="{{item.img}}"></image>
+        <text>{{item.text}}</text>
+    </view>
+
+  </van-grid-item>
+  </van-grid>
+
+</view>
+
+

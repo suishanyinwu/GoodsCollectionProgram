@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.NoticeListMapper">
+
+    <insert id="addNewNotice" parameterType="com.it.entity.NoticeList">
+        insert into goodscollection.noticelist(noticeTitle, noticeContent, dateTime, ipId)
+        VALUES (#{noticeTitle},#{noticeContent},#{dateTime},#{ipId})
+    </insert>
+    
+    <delete id="deleteNotice" parameterType="com.it.entity.NoticeList">
+        delete from goodscollection.noticelist
+               where ipId=#{ipId} and dateTime=#{dateTime}
+    </delete>
+
+    <select id="findByUserId" resultType="com.it.entity.NoticeList">
+        select noticelist.*
+        from goodscollection.noticelist
+        INNER JOIN goodscollection.taglist
+            ON noticelist.ipId = taglist.ipId
+        where userId=#{userId}
+        order by dateTime desc limit #{pageSize} offset #{length}
+    </select>
+
+    <select id="findByIpAndTime" resultType="com.it.entity.NoticeList">
+        select * from goodscollection.noticelist where ipId=#{ipId} and dateTime=#{dateTime}
+    </select>
+</mapper>

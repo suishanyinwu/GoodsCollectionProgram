@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.TagListMapper">
+
+    <insert id="addNewUserTag" parameterType="com.it.entity.TagList">
+        insert into goodscollection.taglist(userId, ipId)
+        VALUES (#{userId},#{ipId})
+    </insert>
+
+    <delete id="deleteUserTag" parameterType="com.it.entity.TagList">
+        delete from goodscollection.taglist
+               where userId=#{userId} and ipId=#{ipId}
+    </delete>
+
+    <select id="findUserTag" resultType="com.it.entity.Ip">
+        select ip.*
+        from goodscollection.taglist
+        inner join goodscollection.ip
+            on taglist.ipId = ip.ipId
+        where userId=#{userId}
+    </select>
+
+    <select id="findUnTagIP" resultType="com.it.entity.Ip">
+        select *
+        from goodscollection.ip
+        where ipId not in (select taglist.ipId
+                           from goodscollection.taglist
+                           where userId=#{userId})
+    </select>
+</mapper>

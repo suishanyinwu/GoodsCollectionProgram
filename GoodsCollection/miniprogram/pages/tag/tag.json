@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "navigationStyle": "default",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText": "订阅IP管理",
+  "navigationBarBackgroundColor": "#f7c74b",
+  "backgroundTextStyle":"dark",
+  "enablePullDownRefresh": false
+}

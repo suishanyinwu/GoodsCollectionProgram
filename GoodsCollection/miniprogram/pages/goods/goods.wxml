@@ -1,0 +1,91 @@
+
+<!--轮播图-->
+<view class="swiper">
+  <swiper 
+  circular 
+  interval="4000" 
+  indicator-dots 
+  indicator-color="white" 
+  indicator-active-color="#FFFF99">
+    <swiper-item wx:for="{{ goodsImgUrlList }}" wx:key="*this" >
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!--商品信息区域-->
+<view class="goods-info-box">
+  <!--商品价格-->
+  <view class="price">￥{{goodsInfo.price}}</view>
+  <!--信息主体内容-->
+  <view class="goods-info-body">
+    <!--商品名称-->
+    <view class="goods-name">{{goodsInfo.goodsSeries}}  {{goodsInfo.ipName}}</view>
+    <!--收藏-->
+    <view class="favi" bind:tap="faviGoods">
+      <van-icon name="{{icnoUrl}}"
+      size="50rpx" />
+      <text>收藏</text>
+    </view>
+  </view>
+    <!--店铺信息-->
+    <view class="gooods-other">
+      <view class="goods-brand-name">{{goodsInfo.brandName}}</view>
+      <view class="goods-dateTime">{{dateTime}}</view>
+    </view>
+    
+</view>
+
+<!--显示商品总体评价-->
+<view class="goods-review-box" bind:tap="gotoReviewpage">
+<view class="goods-review-title">评分：{{goodsScores}}</view>
+<view class="goods-review-body">查看详细评价></view>
+</view>
+
+<!--商品详情内容-->
+<view class="goods-describes-box">
+  <view class="goods-describes-text">产品详情</view>
+
+  <view class="goods-describes-body">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item title="品牌" name="1">
+        {{goodsInfo.brandName}}
+      </van-collapse-item>
+      <van-collapse-item title="IP" name="2">
+       {{goodsInfo.ipName}}
+      </van-collapse-item>
+      <van-collapse-item title="尺寸" name="3">
+       {{goodsInfo.size}}
+      </van-collapse-item>
+      <van-collapse-item title="种类" name="4">
+       {{goodsInfo.type}}
+      </van-collapse-item>
+      <van-collapse-item title="工艺与材质" name="5">
+       {{goodsInfo.craft}}
+      </van-collapse-item>
+      <van-collapse-item title="是否为联动产品" name="6">
+       {{isLink}}
+      </van-collapse-item>
+      <van-collapse-item title="是否为二创产品" name="7">
+       {{isSecond}}
+      </van-collapse-item>
+      <van-collapse-item title="" name="8">
+      </van-collapse-item>
+     
+      
+    </van-collapse>
+
+  </view>
+</view>
+
+<!--底部导航栏-->
+<van-goods-action>
+  <van-goods-action-icon icon="shop-o" text="收藏店铺" bind:click="onClickFavBrand" />
+  <van-goods-action-icon icon="cart-o" text="收藏列表" bind:click="gotoFavPage" />
+  <van-goods-action-button
+    text="添加评价"
+    type="warning"
+    bind:click="submitReview"
+  />
+</van-goods-action>
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.ReviewMapper">
+    <insert id="addReview" parameterType="com.it.entity.Review">
+        insert into goodscollection.review(scores, textContent, goodsId, userId,dateTime)
+        VALUES (#{scores},#{textContent},#{goodsId},#{userId},#{dateTime})
+    </insert>
+
+    <delete id="delReview">
+        delete from goodscollection.review
+               where reviewId=#{reviewId}
+    </delete>
+
+    <update id="updateReviewPraise">
+        update goodscollection.review
+        set praise=#{praise}
+        where reviewId=#{reviewId}
+    </update>
+
+    <select id="findReviewPraise" resultType="int">
+        select praise
+        from goodscollection.review
+        where reviewId=#{reviewId}
+    </select>
+
+    <select id="findThumbsUp" resultType="integer">
+        select reviewId
+        from goodscollection.thumbsup
+        where userId=#{userId} and reviewId=#{reviewId}
+    </select>
+
+    <insert id="likeReview">
+        insert into goodscollection.thumbsup(userId, reviewId)
+        VALUES (#{userId},#{reviewId})
+    </insert>
+
+    <delete id="cancelLikeReview">
+        delete from goodscollection.thumbsup
+               where reviewId=#{reviewId} and userId=#{userId}
+    </delete>
+
+    <insert id="addReviewImg">
+        insert into goodscollection.reviewimg(reviewId, imgUrl)
+        VALUES (#{reviewId},#{imgUrl})
+    </insert>
+
+    <delete id="delReviewImg">
+        delete from goodscollection.reviewimg
+               where reviewId=#{reviewId}
+    </delete>
+
+    <delete id="cancelAllLikeById">
+        delete from goodscollection.thumbsup where reviewId=#{reviewId}
+    </delete>
+
+    <select id="findReviewId" resultType="int">
+        select reviewId
+        from goodscollection.review
+        where goodsId=#{goodsId} and userId=#{userId}
+    </select>
+
+    <select id="findReviewByUserId" resultType="com.it.entity.Review">
+        select *
+        from goodscollection.review
+        where userId=#{userId}
+        order by dateTime desc
+    </select>
+
+    <select id="findReviewPublish" resultType="com.it.entity.Review">
+        select review.*
+        from goodscollection.review
+            inner join goodscollection.publish
+                on review.goodsId=publish.goodsId
+        where publish.userId=#{userId}
+        order by dateTime desc
+    </select>
+
+    <select id="findReviewByGoodsIdDateTime" resultType="com.it.entity.Review">
+        select *
+        from goodscollection.review
+        where goodsId=#{goodsId}
+        order by dateTime desc
+    </select>
+    <select id="findReviewByGoodsIdPraise" resultType="com.it.entity.Review">
+        select *
+        from goodscollection.review
+        where goodsId=#{goodsId}
+        order by praise desc
+    </select>
+    <select id="findReviewById" resultType="com.it.entity.Review">
+        select *
+        from goodscollection.review
+        where reviewId=#{reviewId}
+    </select>
+    <select id="findReviewAllImg" resultType="string">
+        select reviewimg.imgUrl
+        from goodscollection.reviewimg
+        where reviewId=#{reviewId}
+    </select>
+
+    <select id="findReviewScoresByGoodsId" resultType="float">
+        select avg(scores)
+        from goodscollection.review
+        where goodsId=#{goodsId}
+    </select>
+</mapper>

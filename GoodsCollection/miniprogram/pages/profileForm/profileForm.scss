@@ -1,0 +1,23 @@
+/* pages/profileForm/profileForm.wxss */
+
+//头像框
+.profile-picture{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24rpx;
+
+  //按钮透明
+  .btn{
+    background-color:transparent;
+  }
+  .btn::after{
+    border: none;
+  }
+
+  //个人资料表单
+  .van-cell-group{
+    margin-top: 15rpx;
+  }
+
+}

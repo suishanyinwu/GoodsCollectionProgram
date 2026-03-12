@@ -1,0 +1,35 @@
+<!--pages/notice/notice.wxml-->
+
+<!--通知列表-->
+<view class="notice-all" 
+wx:for="{{ noticeList }}" 
+wx:for-item="item" 
+bind:tap="gotoGoodsListPage"
+data-index="{{index}}"
+>
+  <view class="notice-item">
+
+  <!--通知标题与内容-->
+    <view class="title-item">
+      <text>{{ item.noticeTitle }}</text>
+      <text>{{ item.noticeContent }}</text>
+    </view>
+
+  <!--底部提示信息-->
+  <view class="other-item">
+    <!--日期-->
+    <view class="datetime">{{item.dateTime}}</view>
+    <view class="other">查看详情></view>
+  </view>
+  </view>
+
+</view>
+
+<!--列表为空时的文字提示-->
+<view hidden="{{noticeList.length!=0}}">
+  <view class="notice-text">当前通知内容为空</view>
+ </view>
+
+<!--加载更多-->
+<view class="loading" hidden="{{!searchLoading || noticeList.length==0}}">正在载入更多...</view>
+<view class="loading" hidden="{{!searchLoadingComplete || noticeList.length==0}}">已加载全部</view>

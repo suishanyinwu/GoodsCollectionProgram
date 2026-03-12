@@ -1,0 +1,55 @@
+
+
+<!--顶部工具-->
+<view class="publish-top">
+<view class="publish-item">
+  <image src="{{icon1}}" bind:tap="publishNew"></image>
+  <text>新增</text>
+</view>
+</view>
+
+<!--已选发布列表展示-->
+<view class="publish-body">
+  <van-swipe-cell 
+  right-width="{{ 100 }}"
+  async-close
+  wx:for="{{publishGoodsList}}"
+  wx:key="goodsId"
+  data-index="{{index}}"
+  bind:close="onClick"
+  >
+  <van-cell-group>
+    <!--商品名片-->
+    <van-card
+    price="{{item.price}}"
+    desc="{{item.brandName}}"
+    title="{{item.goodsSeries}}"
+    thumb="{{item.goodsImgUrl}}"
+    >
+    <!--标签列表-->
+    <view slot="tags">
+      <van-tag color="#f7c74b" plain>{{item.ipName}}</van-tag>
+      <van-tag class="tag-item" color="#f7c74b" plain wx:if="{{item.isSecond==true}}">二创</van-tag>
+      <van-tag class="tag-item" color="#f7c74b" plain wx:if="{{item.isLink==true}}">联动</van-tag>
+
+    </view>
+  </van-card>
+
+  </van-cell-group>
+  <!--右边滑块按钮-->
+  <view slot="right" class="van-swipe-cell__right">
+    <view class="right-item-del" id="delete" bind:tap="del" >删除</view>
+    <view class="right-item-upd" id="update" bind:tap="upd" >编辑</view>
+  </view>
+</van-swipe-cell>
+
+<!--发布内容为空时的文字提示-->
+ <view hidden="{{publishGoodsList.length!=0}}">
+  <view class="notice-text">当前发布内容为空</view>
+ </view>
+
+</view>
+
+<!--加载更多-->
+<view class="loading" hidden="{{!searchLoading || publishGoodsList.length==0}}">正在载入更多...</view>
+<view class="loading" hidden="{{!searchLoadingComplete || publishGoodsList.length==0}}">已加载全部</view>

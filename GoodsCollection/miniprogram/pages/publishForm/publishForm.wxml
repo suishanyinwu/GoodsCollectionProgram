@@ -1,0 +1,232 @@
+<!--pages/publishForm/publishForm.wxml-->
+
+<!--图片上传-->
+<van-uploader 
+file-list="{{ imgList }}" 
+max-count="5"
+accept="image"
+deletable
+preview-image
+image-fit="aspectFill"
+preview-full-image
+upload-text="最多上传五张图片"
+use-before-read
+bind:before-read="beforeLoader"
+bind:after-read="afterLoader"
+bind:delete="delImg"
+ />
+
+<!--周边信息表单-->
+<van-cell-group>
+  <van-field
+    model:value="{{ newGoodsInfo.goodsSeries }}"
+    placeholder="{{ goodsInfo.goodsSeries }}"
+    label="系列名"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    required
+    auto-focus
+    bind:change="inputGoodsInfo"
+    data-type="goodsSeries"
+  />
+  <van-field
+    value="{{ showIpName }}"
+    placeholder="{{ goodsInfo.ipName }}"
+    label="IP"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    required
+    is-link
+    auto-focus
+    readonly
+    bind:tap="onClickShowIP"
+  />
+  <van-field
+    value="{{ showBrandName }}"
+    placeholder="{{ goodsInfo.brandName }}"
+    label="店铺"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    required
+    is-link
+    auto-focus
+    readonly
+    bind:tap="onClickShowBrand"
+  />
+  <van-field
+    model:value="{{ newGoodsInfo.price }}"
+    placeholder="{{ goodsInfo.price }}"
+    label="价格"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    auto-focus
+    bind:change="inputGoodsInfo"
+    data-type="price"
+  />
+  <van-field
+    value="{{ showTime }}"
+    placeholder="{{ initTime }}"
+    label="上线时间"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    required
+    auto-focus
+    is-link
+    readonly
+    bind:tap="onClickShowTime"
+  />
+  <van-field
+    model:value="{{ newGoodsInfo.type }}"
+    placeholder="{{ goodsInfo.type }}"
+    label="制品种类"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    auto-focus
+    bind:change="inputGoodsInfo"
+    data-type="type"
+    type="textarea"
+    maxlength="30"
+    show-word-limit
+  />
+  <van-field
+    model:value="{{ newGoodsInfo.craft }}"
+    placeholder="{{ goodsInfo.craft }}"
+    label="工艺"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    auto-focus
+    bind:change="inputGoodsInfo"
+    data-type="craft"
+    type="textarea"
+    maxlength="50"
+    show-word-limit
+  />
+  <van-field
+    model:value="{{ newGoodsInfo.size }}"
+    placeholder="{{ goodsInfo.size }}"
+    label="尺寸"
+    border="{{ false }}"
+    input-align="right"
+    autosize
+    auto-focus
+    bind:change="inputGoodsInfo"
+    data-type="size"
+    type="textarea"
+    maxlength="50"
+    show-word-limit
+  />
+  
+</van-cell-group>
+
+<!--从底部弹出IP选择器-->
+<van-popup show="{{ isShowIP }}" position="bottom" bind:close="CloseIP">
+  <van-picker 
+  columns="{{ IPList }}" 
+  bind:change="onChangeIP"
+  show-toolbar
+  title="选择IP"
+  bind:change="onChangeIP"
+  bind:cancel="CancelIP"
+  bind:confirm="chooseIP"
+  value-key="ipName"
+   />
+
+</van-popup>
+
+<!--从底部弹出店铺选择器-->
+<van-popup show="{{ isShowBrand }}" position="bottom" bind:close="CloseBrand">
+  <van-picker 
+  columns="{{ brandList }}" 
+  bind:change="onChangeBrand"
+  show-toolbar
+  title="选择店铺"
+  bind:change="onChangeBrand"
+  bind:cancel="CancelBrand"
+  bind:confirm="chooseBrand"
+  value-key="brandName"
+   />
+
+</van-popup>
+
+<!--从底部弹出选择时间选择器-->
+<van-popup show="{{ isShowTime }}" position="bottom" bind:close="CloseTime">
+  <van-datetime-picker
+  title="选择上线时间"
+  type="date"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+  bind:cancel="CancelTime"
+  bind:confirm="ChangeTime"
+/>
+</van-popup>
+
+<!--周边信息表单 复选框-->
+<van-checkbox-group value="{{ checkboxResult }}" bind:change="onChangeCheckbox">
+  <van-cell-group>
+    <van-cell
+      title="是否为联动产品"
+      value-class="value-class"
+      required
+    >
+      <van-checkbox
+        name="isLink"
+        checked-color="#EE6363"
+      />
+    </van-cell>
+
+    <van-cell
+      title="是否为二创产品"
+      value-class="value-class"
+      required
+    >
+      <van-checkbox
+        name="isSecond"
+        checked-color="#EE6363"
+      />
+    </van-cell>
+  </van-cell-group>
+</van-checkbox-group>
+
+<!--周边信息表单 关联角色的复选框-->
+<van-checkbox-group value="{{ personaResult }}" bind:change="onChangePersonaCheckbox">
+  <view  hidden="{{personaList.length!=0}}">
+  <van-cell
+      title="IP关联的角色:"
+      value="内容为空，请先选择IP"
+  />
+  </view>
+  <view  hidden="{{personaList.length==0}}">
+  <van-cell
+      title="IP关联的角色:"
+  />
+  </view>
+  <van-cell-group wx:for="{{ personaList }}" wx:for-item="item" wx:key="personaId">
+    <van-cell
+      title="{{item.personaName}}"
+      value-class="value-class"
+    >
+      <van-checkbox
+        name="{{item.personaId}}"
+        checked-color="#EE6363"
+      />
+    </van-cell>
+  </van-cell-group>
+</van-checkbox-group>
+
+<!--保存资料按钮-->
+<van-button 
+  type="primary" 
+  block
+  bind:click="changeGoodsInformation"
+  color="#f7c74b"
+>保存
+</van-button>

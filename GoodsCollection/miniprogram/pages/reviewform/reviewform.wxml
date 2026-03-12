@@ -1,0 +1,58 @@
+<!--提示-->
+<view class="notice-text">
+当前评价的周边是：{{goodsSeries}}
+</view>
+<!--图片上传-->
+<van-uploader 
+file-list="{{ imgList }}" 
+max-count="3"
+accept="image"
+deletable
+preview-image
+image-fit="aspectFill"
+preview-full-image
+upload-text="最多上传三张图片"
+use-before-read
+bind:before-read="beforeLoader"
+bind:after-read="afterLoader"
+bind:delete="delImg"
+ />
+
+ <!--评价信息表单-->
+<van-cell-group>
+  <!--评分-->
+  <view class="scores-body">
+    <view class="scores-text">
+    <text class="one">*</text>
+    <text class="two">评分</text>
+    </view>
+    <van-rate 
+    class="scores-choose"
+    count="10"
+    size="18px"
+    value="{{ reviewInfo.scores }}" 
+    bind:change="changeScores" />
+  </view>
+  <!--评价内容-->
+  <van-field
+    model:value="{{ textContent }}"
+    placeholder="请输入评价内容"
+    label="评价内容"
+    border="{{ false }}"
+    type="textarea"
+    autosize
+    required
+    auto-focus
+    maxlength="800"
+    show-word-limit
+  />
+</van-cell-group>
+
+ <!--保存资料按钮-->
+<van-button 
+  type="primary" 
+  block
+  bind:click="changeReviewInfo"
+  color="#f7c74b"
+>保存
+</van-button>

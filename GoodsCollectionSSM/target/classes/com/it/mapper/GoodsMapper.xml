@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.GoodsMapper">
+
+    <insert id="addNewGoods" parameterType="com.it.entity.Goods">
+        insert into goodscollection.goods(goodsId, goodsSeries, ipId, brandId
+        <if test='size !=null and size !=""'>, size</if>
+        <if test="price !=null and price!='0'.toString()">, price</if>
+        <if test="type !=null and type !=''">, type</if>
+        <if test="craft !=null and craft !=''">,craft</if>
+        <if test="dateTime !=null">,dateTime</if>
+        <if test="isLink !=null">,isLink</if>
+        <if test="isSecond !=null">,isSecond</if>)
+        values(#{goodsId}, #{goodsSeries}, #{ipId}, #{brandId}
+        <if test="size !=null and size !=''">, #{size}</if>
+        <if test="price !=null and price !='0'.toString()">, #{price}</if>
+        <if test="type !=null and type !=''">, #{type}</if>
+        <if test="craft !=null and craft !=''">, #{craft}</if>
+        <if test="dateTime !=null">, #{dateTime}</if>
+        <if test="isLink !=null">,#{isLink}</if>
+        <if test="isSecond !=null">,#{isSecond}</if>)
+    </insert>
+    
+    <delete id="deleteById">
+        delete from goodscollection.goods where goodsId = #{goodsId}
+    </delete>
+
+    <update id="updateGoods" parameterType="com.it.entity.Goods">
+        update goodscollection.goods
+        <set>
+            <if test="goodsSeries != null and goodsSeries !=''">goodsSeries=#{goodsSeries},</if>
+            <if test="ipId != null and ''!=ipId">ipId=#{ipId},</if>
+            <if test="size != null and ''!= size">size=#{size},</if>
+            <if test="price !=null and price !='0'.toString()">price=${price},</if>
+            <if test="type != null and ''!=type">type=#{type},</if>
+            <if test="craft != null and ''!=craft">craft=#{craft},</if>
+            <if test="dateTime !=null">dateTime=#{dateTime},</if>
+            <if test="isLink != null and ''!=isLink">isLink=#{isLink},</if>
+            <if test="isSecond != null and ''!=isSecond">isSecond=#{isSecond},</if>
+            <if test="brandId != null and ''!=brandId">brandId=#{brandId}</if>
+        </set>
+        where goodsId=#{goodsId}
+    </update>
+
+    <select id="findAll" resultType="com.it.entity.Goods">
+        select * from
+        goodscollection.goods
+    </select>
+
+    <select id="findByGoodsId" resultType="com.it.entity.Goods">
+        select * from goodscollection.goods where goodsId=#{goodsId}
+    </select>
+
+    <select id="findGoodsInfo" resultType="map">
+        select goods.*,ip.ipName,brand.brandName
+        from goodscollection.goods
+        inner join goodscollection.ip
+            on goods.ipId = ip.ipId
+        inner join goodscollection.brand
+            on goods.brandId = brand.brandId
+        where goodsId=#{goodsId}
+    </select>
+
+    <select id="findAllGoodsInfo" resultType="map">
+        select goods.*,ip.ipName,brand.brandName
+        from goodscollection.goods
+                 inner join goodscollection.ip
+                            on goods.ipId = ip.ipId
+                 inner join goodscollection.brand
+                            on goods.brandId = brand.brandId
+    </select>
+
+    <select id="findByIpId" resultType="com.it.entity.Goods">
+        select *
+        from goodscollection.goods
+        where ipId=#{ipId}
+    </select>
+    
+    <select id="findByPersonaId" resultType="com.it.entity.Goods">
+        select goods.*
+        from goodscollection.goods
+        inner join goodscollection.productassociations
+            on goods.goodsId = productassociations.goodsId
+        where  personaId=#{personaId}
+    </select>
+
+    <select id="findByBrandId" resultType="com.it.entity.Goods">
+        select *
+        from goodscollection.goods
+        where brandId=#{brandId}
+    </select>
+
+    <select id="findUserPublish" resultType="com.it.entity.Goods">
+        select goods.*
+        from goodscollection.goods
+        inner join goodscollection.publish
+            on goods.goodsId = publish.goodsId
+        where userId = #{userId}
+    </select>
+
+    <select id="findByIPTime" resultType="com.it.entity.Goods">
+        select *
+        from goodscollection.goods
+        where ipId=#{ipId} and dateTime=#{dateTime}
+    </select>
+
+    <select id="searchByText" resultType="com.it.entity.Goods">
+        select distinct goods.*
+        from goodscollection.goods
+        inner join goodscollection.ip on goods.ipId = ip.ipId
+        inner join goodscollection.productassociations on goods.goodsId = productassociations.goodsId
+        inner join goodscollection.persona on productassociations.personaId = persona.personaId
+        inner join goodscollection.brand on goods.brandId = brand.brandId
+        where ipName REGEXP #{text}
+           OR goodsSeries REGEXP #{text}
+           OR personaName REGEXP #{text}
+           OR brandName REGEXP #{text}
+    </select>
+
+    <select id="findImgUrlById" resultType="string" parameterType="string">
+        select goodsImgUrl
+        from goodscollection.goodsimg
+        where goodsId=#{goodsId}
+        order by id asc
+    </select>
+
+    <insert id="addImgUrl" parameterType="com.it.entity.GoodsImg">
+        insert into goodscollection.goodsimg(goodsId, goodsImgUrl)
+        VALUES (#{goodsId},#{goodsImgUrl})
+    </insert>
+
+    <delete id="delImgUrlList" parameterType="string">
+        delete from goodscollection.goodsimg
+               where goodsId=#{goodsId}
+    </delete>
+</mapper>

@@ -1,0 +1,95 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+//轮播图
+.swiper{
+  swiper{
+    height: 800rpx;
+    background-color: rgb(223, 220, 220);
+    swiper-item{
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+//推荐跳转
+.recommendation-jump{
+  display: flex;
+  background-color: rgb(247, 246, 236);
+  padding: 20rpx;
+  border-radius: 20rpx;
+  margin: 15rpx;
+  view{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    image{
+      width: 40rpx;
+      height: 40rpx;
+    }
+    text{
+      font-size: 35rpx;
+      margin-left: 12rpx;
+      font-weight: 515;
+    }
+  }
+}
+
+//活动消息
+.message-hot{
+  display: flex;
+  flex-direction: column;
+
+  .message-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 240rpx;
+    margin: 0 25rpx 0;
+    border-bottom: 1rpx solid #eeebeb;
+    image{
+      width: 42%;
+      height: 170rpx;
+      border-radius: 12rpx;
+      margin: 12rpx;
+    }
+    .text-item{
+      display: flex;
+      flex-direction: column;
+      width: 58%; 
+      text{
+        margin-left: 12rpx;
+      &:nth-of-type(1){
+        font-size: 35rpx;
+        font-weight: 400;
+      }
+      &:nth-of-type(2){
+        font-size: 25rpx;
+        font-weight: 350;
+        color: rgb(184, 179, 179);
+      }
+       
+      }
+    }
+  }
+}
+
+//文字提醒
+.notice-text{
+  margin: 20rpx;
+  display: flex;
+  justify-content: center;
+  text{
+
+    font-size: 25rpx;
+    font-weight: 350;
+    color: rgb(184, 179, 179);
+  }
+}

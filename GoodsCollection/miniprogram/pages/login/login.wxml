@@ -1,0 +1,33 @@
+<!--pages/login/login.wxml-->
+
+<!--头像框-->
+<view class="login-picture">
+<button class="btn" bindtap="loginUser" >
+  <van-image 
+  round 
+  width="120" 
+  height="120" 
+  src="{{userImgUrl}}" 
+  fit="cover" />
+</button>
+</view>
+
+<view class="login-body">
+<text>点击头像或者按钮即可授权登陆~</text>
+  <van-button 
+  round
+   type="danger"
+   color="linear-gradient(to right, #CD5555, #FFC125)"
+   class="bottom-button" 
+   bind:tap="loginUser" 
+   disabled="{{isLogin}}"
+   >
+  点击授权登陆
+  </van-button>
+</view>
+
+
+
+
+
+

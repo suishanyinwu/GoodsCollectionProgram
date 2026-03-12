@@ -1,0 +1,75 @@
+/* pages/favorites/favorites.wxss */
+page{
+  height: 650px;
+  background-color: #EEEEEE;
+}
+
+//选项栏
+.options-bar{
+  height: 75rpx;
+  background-color: #fff;
+  padding: 20rpx 15rpx;
+  display: flex;
+  justify-content: flex-start;
+
+  text{
+    font-size: 35rpx;
+    align-items: center;
+  }
+
+  .option-item{
+   margin: 10rpx 22rpx 10rpx;
+  }
+  
+  .option-item-active{
+    margin: 10rpx 22rpx 10rpx;
+    border-bottom: 1rpx solid #e0c00b;
+  }
+}
+
+//收藏内容
+.favorite-content{
+  background-color: #fff;
+  .favorite-item{
+    height: 252rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1rpx solid #eeebeb;
+    image{
+      width: 250rpx;
+      height: 200rpx;
+      border-radius: 12rpx;
+      margin: 12rpx;
+    }
+    .text-item{
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      width: 58%; 
+      margin-left: 10rpx;
+      text{
+        margin-left: 12rpx;
+        font-size: 35rpx;
+        font-weight: 375;
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 超出隐藏 */
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
+        &:nth-of-type(2){
+          font-size: 35rpx;
+          color: rgb(209, 55, 55);
+        }
+    }
+  }
+  }
+}
+
+//加载更多
+.loading {
+  position: relative;
+  bottom: 5rpx;
+  padding: 10rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: rgb(184, 179, 179);
+}

@@ -1,0 +1,36 @@
+//周边展示内容
+.recommendation-content{
+  background-color: #fff;
+  .recommendation-item{
+    height: 252rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1rpx solid #eeebeb;
+    image{
+      width: 250rpx;
+      height: 200rpx;
+      border-radius: 12rpx;
+      margin: 12rpx;
+    }
+    .text-item{
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      width: 58%; 
+      margin-left: 10rpx;
+      text{
+        margin-left: 12rpx;
+        font-size: 35rpx;
+        font-weight: 375;
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 超出隐藏 */
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
+        &:nth-of-type(2){
+          font-size: 35rpx;
+          color: rgb(209, 55, 55);
+        }
+    }
+  }
+  }
+}

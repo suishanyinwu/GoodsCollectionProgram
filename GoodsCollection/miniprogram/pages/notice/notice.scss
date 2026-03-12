@@ -1,0 +1,87 @@
+/* pages/notice/notice.wxss */
+page{
+  background-color: #EEEEEE;
+  height: 600px;
+}
+
+//通知列表
+.notice-all{
+  display: flex;
+  flex-direction: column;
+
+  .notice-item{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-right: 0;
+    
+    height: 220rpx;
+    margin: 15rpx 25rpx 0;
+    background-color: #FFF;
+    border-radius: 20rpx;
+    
+    //标题
+    .title-item{
+      display: flex;
+      flex-direction: column;
+      width: 90%; 
+      text{
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 超出隐藏 */
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
+        margin: 13rpx;
+      &:nth-of-type(1){
+        font-size: 35rpx;
+        font-weight: 400;
+      }
+      &:nth-of-type(2){
+        font-size: 30rpx;
+        font-weight: 350;
+        color: rgb(138, 137, 137);
+      }
+       
+      }
+    }
+
+
+    //分隔线底部
+    .other-item{
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #efefef;
+      .datetime{
+        font-size: 13px;
+        color: #c2c0bc;
+        margin-top: 15px;
+        margin-right: 15px;
+      }
+      .other{
+        font-size: 13px;
+        color: #535250;
+        margin-top: 15px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+//通知提示
+.notice-text{
+
+  margin: 20rpx;
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 350;
+  color: rgb(184, 179, 179);
+}
+
+//加载更多
+.loading {
+  position: relative;
+  bottom: 5rpx;
+  padding: 10rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: rgb(184, 179, 179);
+}

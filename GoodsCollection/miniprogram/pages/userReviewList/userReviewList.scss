@@ -1,0 +1,76 @@
+//评论信息
+.review-content{
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1rpx solid #eeebeb;
+  .userAvatar{ //用户头像
+    display: flex;
+    justify-content: center;
+    width: 18%;
+  }
+  .review-info{ //评论详细信息
+    width: 82%;
+    .info-text{
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      .userName{  //用户名
+        font-size: 13px;
+      }
+      .goodsSeries{  //周边系列名
+        margin-right: 10px;
+        color: rgb(184, 179, 179);
+      }
+    }
+    .review-scores{  //用户评分
+      color: #af8722;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    .review-textContent{  //评价文本内容
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    .review-bottom{  //倒数第二层
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-right: 20px;
+      .review-dateTime{  //评价时间
+        color: rgb(184, 179, 179);
+        font-size: 28rpx;
+      }
+      .review-praise{ //点赞内容
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .praise-num{  //点赞数
+          font-size: 28rpx;
+          color: #af8722;
+        }
+      }
+    }
+    .review-lastBottom{ //最底层
+      float: right;
+      margin-right: 15px;
+      margin-top: 10px;
+      image{
+        height: 45rpx;
+        width: 45rpx;
+      }
+    }
+  }
+}
+
+//列表为空内容的提示
+.notice-text{
+  margin: 20rpx;
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 350;
+  color: rgb(184, 179, 179);
+}
